@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Panchanga - Chanakya University</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff6f00, #ffca28);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
+  }
+   .container {
+    background: rgba(255, 253, 231, 0.95);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .header {
+    background: linear-gradient(90deg, #c62828, #d81b60);
+    color: white;
+    padding: 15px;
+    border-radius: 15px 15px 0 0;
+    margin: -20px -20px 20px -20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+    .header-content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+  }
+    .header-left, .header-right {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+  }
+
+   .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #b71c1c;
+    margin: 5px 0;
+    text-align: center;
+  }
+    .logo::before, .logo::after {
+    content: "🪔";
+    font-size: 24px;
+    margin: 0 5px;
+    animation: glow 1.5s infinite alternate;
+  }
+     @keyframes glow {
+    from { text-shadow: 0 0 5px #ffeb3b; }
+    to { text-shadow: 0 0 15px #ff5722; }
+  }
+     .content {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+     .column {
+    width: 48%; /* Fixed size for side-by-side alignment */
+    min-width: 0; /* Prevent overflow */
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 15px;
+    background: rgba(255, 245, 157, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    flex-shrink: 1; /* Allow shrinking on small screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+    .column:hover {
+      transform: scale(1.02);
+    }
+    .label {
+      font-weight: 600;
+      color: #1a237e;
+    }
+    .kannada {
+      color: #d81b60;
+      font-family: "Noto Sans Kannada", sans-serif;
+    }
+     .date-section {
+    background: linear-gradient(90deg, #c62828, #d81b60);
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 0 0 15px 15px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+    margin: 20px -20px -20px -20px;
+  }
+    .date-content {
+      display: inline-block;
+    }
+    .date-section div {
+      font-size: 22px;
+      font-weight: 600;
+      display: inline;
+      margin: 0 10px;
+    }
+   @media (max-width: 768px) {
+    /* ✅ Mobile Responsiveness */
+    .container {
+      padding: 10px;
+      max-height: 100vh;
+    }
+
+    .header-left, .header-right {
+      font-size: 20px;
+    }
+
+    .logo {
+      font-size: 18px;
+    }
+
+    .content {
+      gap: 5px;
+      flex-wrap: nowrap;
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+    }
+
+    .column {
+      width: 48%; /* Keep side-by-side alignment */
+      font-size: 14px;
+      padding: 10px;
+      flex-shrink: 1;
+    }
+
+    .date-section {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    /* ✅ Desktop Optimization */
+    .container {
+      max-width: 800px;
+      height: 90vh;
+    }
+
+    .header-left, .header-right {
+      font-size: 32px;
+    }
+
+    .logo {
+      font-size: 24px;
+    }
+
+    .column {
+      font-size: 16px;
+    }
+
+    .date-section {
+      font-size: 18px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-content">
+        <div class="header-right">ಚಾಣಕ್ಯ ವಿಶ್ವವಿದ್ಯಾಲಯ</div>
+        <div class="header-right">Chanakya University</div>
+      </div>
+    </div>
+
+    <div class="logo">ಇಂದಿನ ಪಂಚಾಂಗ | Today's Panchangam</div>
+
+    <div class="content">
+      <div class="column" id="kannada-column">
+        <div><span class="label kannada">ಯುಗ :</span> <span id="yuga-ka"></span></div>
+        <div><span class="label kannada">ಶಕ :</span> <span id="shaka-ka"></span></div>
+        <div><span class="label kannada">ಸಂವತ್ಸರ :</span> <span id="samvatsara-ka"></span></div>
+        <div><span class="label kannada">ಅಯನ :</span> <span id="ayana-ka"></span></div>
+        <div><span class="label kannada">ಋತು :</span> <span id="ritu-ka"></span></div>
+        <div><span class="label kannada">ಮಾಸ :</span> <span id="masa-ka"></span></div>
+        <div><span class="label kannada">ಪಕ್ಷ :</span> <span id="paksha-ka"></span></div>
+        <div><span class="label kannada">ತಿಥಿ :</span> <span id="tithi-ka"></span></div>
+        <div><span class="label kannada">ವಾರ :</span> <span id="day-ka"></span></div>
+        <div><span class="label kannada">ನಕ್ಷತ್ರ :</span> <span id="nakshatra-ka"></span></div>
+      </div>
+
+      <div class="column" id="english-column">
+        <div><span class="label">Yuga :</span> <span id="yuga-en"></span></div>
+        <div><span class="label">Shaka :</span> <span id="shaka-en"></span></div>
+        <div><span class="label">Samvatsara :</span> <span id="samvatsara-en"></span></div>
+        <div><span class="label">Ayana :</span> <span id="ayana-en"></span></div>
+        <div><span class="label">Ritu :</span> <span id="ritu-en"></span></div>
+        <div><span class="label">Masa :</span> <span id="masa-en"></span></div>
+        <div><span class="label">Paksha :</span> <span id="paksha-en"></span></div>
+        <div><span class="label">Tithi :</span> <span id="tithi-en"></span></div>
+        <div><span class="label">Day :</span> <span id="day-en"></span></div>
+        <div><span class="label">Nakshatra :</span> <span id="nakshatra-en"></span></div>
+      </div>
+    </div>
+
+    <div class="date-section">
+      <div class="date-content">
+        <div class="kannada" id="date-ka"></div>
+        <div id="date-en"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Kannada mappings
+    const kannadaMonths = {
+      "January": "ಜನವರಿ", "February": "ಫೆಬ್ರವರಿ", "March": "ಮಾರ್ಚ್", "April": "ಏಪ್ರಿಲ್",
+      "May": "ಮೇ", "June": "ಜೂನ್", "July": "ಜುಲೈ", "August": "ಆಗಸ್ಟ್",
+      "September": "ಸೆಪ್ಟೆಂಬರ್", "October": "ಅಕ್ಟೋಬರ್", "November": "ನವೆಂಬರ್", "December": "ಡಿಸೆಂಬರ್"
+    };
+    const kannadaDays = {
+      "Sunday": "ಭಾನುವಾರ", "Monday": "ಸೋಮವಾರ", "Tuesday": "ಮಂಗಳವಾರ", "Wednesday": "ಬುಧವಾರ",
+      "Thursday": "ಗುರುವಾರ", "Friday": "ಶುಕ್ರವಾರ", "Saturday": "ಶನಿವಾರ"
+    };
+
+    // Arrays for dynamic Panchanga data
+    const tithis = ["ಪ್ರತಿಪದ", "ದ್ವಿತೀಯ", "ತೃತೀಯ", "ಚತುರ್ಥಿ", "ಪಂಚಮಿ", "ಷಷ್ಠಿ", "ಸಪ್ತಮಿ", "ಅಷ್ಟಮಿ", "ನವಮಿ", "ದಶಮಿ", "ಏಕಾದಶಿ", "ದ್ವಾದಶಿ", "ತ್ರಯೋದಶಿ", "ಚತುರ್ದಶಿ", "ಪೂರ್ಣಿಮೆ/ಅಮಾವಾಸ್ಯ"];
+    const nakshatras = ["ಅಶ್ವಿನಿ", "ಭರಣಿ", "ಕೃತ್ತಿಕಾ", "ರೋಹಿಣಿ", "ಮೃಗಶಿರ", "ಆರ್ದ್ರಾ", "ಪುನರ್ವಸು", "ಪುಷ್ಯ", "ಆಶ್ಲೇಷ", "ಮಘ", "ಪೂರ್ವ ಫಲ್ಗುಣಿ", "ಉತ್ತರ ಫಲ್ಗುಣಿ", "ಹಸ್ತ", "ಚಿತ್ರ", "ಸ್ವಾತಿ", "ವಿಶಾಖ", "ಅನುರಾಧ", "ಜ್ಯೇಷ್ಠ", "ಮೂಲ", "ಪೂರ್ವಾಷಾಢ", "ಉತ್ತರಾಷಾಢ", "ಶ್ರವಣ", "ಧನಿಷ್ಠ", "ಶತಭಿಷ", "ಪೂರ್ವ ಭಾದ್ರಪದ", "ಉತ್ತರ ಭಾದ್ರಪದ", "ರೇವತಿ"];
+    const masas = ["ಚೈತ್ರ", "ವೈಶಾಖ", "ಜ್ಯೇಷ್ಠ", "ಆಷಾಢ", "ಶ್ರಾವಣ", "ಭಾದ್ರಪದ", "ಆಶ್ವಯುಜ", "ಕಾರ್ತೀಕ", "ಮಾರ್ಗಶಿರ", "ಪೌಷ", "ಮಾಘ", "ಫಲ್ಗುಣ"];
+    const ritus = ["ವಸಂತ", "ಗ್ರೀಷ್ಮ", "ವರ್ಷ", "ಶರದ್", "ಹೇಮಂತ", "ಶಿಶಿರ"];
+    const ayanas = ["ಉತ್ತರಾಯಣ", "ದಕ್ಷಿಣಾಯನ"];
+    const pakshas = ["ಶುಕ್ಲ ಪಕ್ಷ", "ಕೃಷ್ಣ ಪಕ್ಷ"];
+
+    // Function to get dynamic Panchanga based on current date
+    function getDynamicPanchanga(date) {
+      const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24) % 365;
+      return {
+        yuga: "ಕಲಿಯುಗಾಬ್ದ ೫೧೨೬",
+        shaka: "ಶಾಲಿವಾಹನ ೧೯೪೭",
+        samvatsara: "ಕ್ರೋಧಿ",
+        ayana: ayanas[Math.floor(dayOfYear / 182)], // Switch every ~6 months
+        ritu: ritus[Math.floor(dayOfYear / 61)], // Rotate every ~2 months
+        masa: masas[Math.floor(dayOfYear / 30)], // Rotate every month
+        paksha: pakshas[Math.floor(dayOfYear / 15) % 2], // Switch every ~15 days
+        tithi: tithis[dayOfYear % tithis.length], // Rotate daily
+        nakshatra: nakshatras[dayOfYear % nakshatras.length] // Rotate daily
+      };
+    }
+
+    // Update date and Panchanga instantly
+    function updatePanchanga() {
+      const today = new Date(); // Use current date instead of fixed date
+      const day = today.toLocaleDateString("en-US", { weekday: "long" });
+      const dateEn = today.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+      const dateKa = `${kannadaMonths[today.toLocaleDateString("en-US", { month: "long" })]} ${today.getDate()}, ${today.getFullYear()}`;
+
+      // Get dynamic Panchanga
+      const panchanga = getDynamicPanchanga(today);
+
+      // Update date section
+      document.getElementById("date-en").textContent = dateEn;
+      document.getElementById("date-ka").textContent = dateKa;
+
+      // Update Kannada column
+      document.getElementById("yuga-ka").textContent = panchanga.yuga;
+      document.getElementById("shaka-ka").textContent = panchanga.shaka;
+      document.getElementById("samvatsara-ka").textContent = panchanga.samvatsara;
+      document.getElementById("ayana-ka").textContent = panchanga.ayana;
+      document.getElementById("ritu-ka").textContent = panchanga.ritu;
+      document.getElementById("masa-ka").textContent = panchanga.masa;
+      document.getElementById("paksha-ka").textContent = panchanga.paksha;
+      document.getElementById("tithi-ka").textContent = panchanga.tithi;
+      document.getElementById("day-ka").textContent = kannadaDays[day];
+      document.getElementById("nakshatra-ka").textContent = panchanga.nakshatra;
+
+      // Update English column
+      document.getElementById("yuga-en").textContent = "Kaliyugabda 5126";
+      document.getElementById("shaka-en").textContent = "Shaliwahana 1947";
+      document.getElementById("samvatsara-en").textContent = "Krodhi";
+      document.getElementById("ayana-en").textContent = panchanga.ayana === "ಉತ್ತರಾಯಣ" ? "Uttarayana" : "Dakshinayana";
+      document.getElementById("ritu-en").textContent = panchanga.ritu === "ವಸಂತ" ? "Vasanta" : panchanga.ritu === "ಗ್ರೀಷ್ಮ" ? "Grishma" : panchanga.ritu === "ವರ್ಷ" ? "Varsha" : panchanga.ritu === "ಶರದ್" ? "Sharad" : panchanga.ritu === "ಹೇಮಂತ" ? "Hemanta" : "Shishira";
+      document.getElementById("masa-en").textContent = panchanga.masa === "ಚೈತ್ರ" ? "Chaitra" : panchanga.masa === "ವೈಶಾಖ" ? "Vaishakha" : panchanga.masa === "ಜ್ಯೇಷ್ಠ" ? "Jyeshtha" : panchanga.masa === "ಆಷಾಢ" ? "Ashadha" : panchanga.masa === "ಶ್ರಾವಣ" ? "Shravana" : panchanga.masa === "ಭಾದ್ರಪದ" ? "Bhadrapada" : panchanga.masa === "ಆಶ್ವಯುಜ" ? "Ashwin" : panchanga.masa === "ಕಾರ್ತೀಕ" ? "Kartika" : panchanga.masa === "ಮಾರ್ಗಶಿರ" ? "Margashirsha" : panchanga.masa === "ಪೌಷ" ? "Pausha" : panchanga.masa === "ಮಾಘ" ? "Magha" : "Phalguna";
+      document.getElementById("paksha-en").textContent = panchanga.paksha === "ಶುಕ್ಲ ಪಕ್ಷ" ? "Shukla Paksha" : "Krishna Paksha";
+      document.getElementById("tithi-en").textContent = panchanga.tithi === "ಪ್ರತಿಪದ" ? "Pratipada" : panchanga.tithi === "ದ್ವಿತೀಯ" ? "Dwitiya" : panchanga.tithi === "ತೃತೀಯ" ? "Tritiya" : panchanga.tithi === "ಚತುರ್ಥಿ" ? "Chowthi" : panchanga.tithi === "ಪಂಚಮಿ" ? "Panchami" : panchanga.tithi === "ಷಷ್ಠಿ" ? "Shashti" : panchanga.tithi === "ಸಪ್ತಮಿ" ? "Saptami" : panchanga.tithi === "ಅಷ್ಟಮಿ" ? "Ashtami" : panchanga.tithi === "ನವಮಿ" ? "Navami" : panchanga.tithi === "ದಶಮಿ" ? "Dashami" : panchanga.tithi === "ಏಕಾದಶಿ" ? "Ekadashi" : panchanga.tithi === "ದ್ವಾದಶಿ" ? "Dwadashi" : panchanga.tithi === "ತ್ರಯೋದಶಿ" ? "Trayodashi" : panchanga.tithi === "ಚತುರ್ದಶಿ" ? "Chaturdashi" : "Purnima/Amavasya";
+      document.getElementById("day-en").textContent = day;
+      document.getElementById("nakshatra-en").textContent = panchanga.nakshatra === "ಅಶ್ವಿನಿ" ? "Ashwini" : panchanga.nakshatra === "ಭರಣಿ" ? "Bharani" : panchanga.nakshatra === "ಕೃತ್ತಿಕಾ" ? "Krittika" : panchanga.nakshatra === "ರೋಹಿನಿ" ? "Rohini" : panchanga.nakshatra === "ಮೃಗಶಿರ" ? "Mrigashira" : panchanga.nakshatra === "ಆರ್ದ್ರಾ" ? "Ardra" : panchanga.nakshatra === "ಪುನರ್ವಸು" ? "Punarvasu" : panchanga.nakshatra === "ಪುಷ್ಯ" ? "Pushya" : panchanga.nakshatra === "ಆಶ್ಲೇಷ" ? "Ashlesha" : panchanga.nakshatra === "ಮಘ" ? "Magha" : panchanga.nakshatra === "ಪೂರ್ವ ಫಲ್ಗುಣಿ" ? "Purva Phalguni" : panchanga.nakshatra === "ಉತ್ತರ ಫಲ್ಗುಣಿ" ? "Uttara Phalguni" : panchanga.nakshatra === "ಹಸ್ತ" ? "Hasta" : panchanga.nakshatra === "ಚಿತ್ರ" ? "Chitra" : panchanga.nakshatra === "ಸ್ವಾತಿ" ? "Swathi" : panchanga.nakshatra === "ವಿಶಾಖ" ? "Vishakha" : panchanga.nakshatra === "ಅನುರಾಧ" ? "Anuradha" : panchanga.nakshatra === "ಜ್ಯೇಷ್ಠ" ? "Jyeshtha" : panchanga.nakshatra === "ಮೂಲ" ? "Mula" : panchanga.nakshatra === "ಪೂರ್ವಾಷಾಢ" ? "Purva Ashadha" : panchanga.nakshatra === "ಉತ್ತರಾಷಾಢ" ? "Uttara Ashadha" : panchanga.nakshatra === "ಶ್ರವಣ" ? "Shravana" : panchanga.nakshatra === "ಧನಿಷ್ಠ" ? "Dhanishta" : panchanga.nakshatra === "ಶತಭಿಷ" ? "Shatabhisha" : panchanga.nakshatra === "ಪೂರ್ವ ಭಾದ್ರಪದ" ? "Purva Bhadrapada" : panchanga.nakshatra === "ಉತ್ತರ ಭಾದ್ರಪದ" ? "Uttara Bhadrapada" : "Revati";
+    }
+
+    // Run immediately
+    updatePanchanga();
+
+    // Auto-refresh every day (86400000 ms = 24 hours)
+    setInterval(updatePanchanga, 86400000);
+  </script>
+</body>
+</html>
